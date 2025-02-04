@@ -8,7 +8,7 @@ import { INITIAL_MARKET_PRICES, INITIAL_NEW_ITEM } from '../../constants/jewelry
 
 const JewelryPortfolio = () => {
     const initialItem: JewelryItem = {
-        id: Date.now(), 
+        id: Date.now(),
         name: 'Necklace',
         metalType: 'gold',
         metalWeight: 20,
@@ -38,7 +38,6 @@ const JewelryPortfolio = () => {
 
     const handleAddItem = (e: React.FormEvent) => {
         e.preventDefault();
-        if (!newItem.name || !newItem.metalWeight || !newItem.gemWeight) return;
 
         const itemWithValue: JewelryItem = {
             ...newItem,
