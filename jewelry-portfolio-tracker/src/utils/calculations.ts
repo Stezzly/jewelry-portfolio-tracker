@@ -1,9 +1,9 @@
-import { JewelryItem, MarketPrices } from '../types/jewelery';
+import { JewelryItem, MarketPricesType } from '../types/jewelery';
 import { GOLD_PURITY_RATIOS } from '../constants/jewelryConstants';
 
 export const calculateItemValue = (
     item: Omit<JewelryItem, 'id' | 'value'>,
-    marketPrices: MarketPrices
+    marketPrices: MarketPricesType
 ): number => {
     let metalValue;
     if (item.metalType === 'gold' && item.goldKarat) {

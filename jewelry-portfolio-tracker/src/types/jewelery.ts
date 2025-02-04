@@ -1,4 +1,4 @@
-export interface MarketPrices {
+export interface MarketPricesType {
     gold: number;
     silver: number;
     diamond: number;
@@ -12,7 +12,7 @@ export interface JewelryItem {
     metalType: 'gold' | 'silver';
     goldKarat?: '24' | '22' | '18' | '14' | '10';
     metalWeight: number;
-    gemType: 'diamond' | 'ruby' | 'sapphire' | 'emerald';
+    gemType: 'diamond' | 'ruby' | 'sapphire';
     gemWeight: number;
     value: number;
 }
@@ -22,6 +22,6 @@ export interface NewItemForm {
     metalType: 'gold' | 'silver';
     goldKarat: '24' | '22' | '18' | '14' | '10';
     metalWeight: number;
-    gemType: 'diamond' | 'ruby' | 'sapphire' | 'emerald';
+    gemType: 'diamond' | 'ruby' | 'sapphire';
     gemWeight: number;
 }
