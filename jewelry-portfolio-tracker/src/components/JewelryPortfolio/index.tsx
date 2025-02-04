@@ -20,6 +20,7 @@ const JewelryPortfolio = () => {
     const [items, setItems] = useState<JewelryItem[]>([initialItem]);
     const [marketPrices, setMarketPrices] = useState<MarketPricesType>(INITIAL_MARKET_PRICES);
     const [newItem, setNewItem] = useState<NewItemForm>(INITIAL_NEW_ITEM);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     const handleUpdatePrice = (type: keyof MarketPricesType, value: number) => {
         setMarketPrices(prev => {
@@ -38,7 +39,29 @@ const JewelryPortfolio = () => {
 
     const handleAddItem = (e: React.FormEvent) => {
         e.preventDefault();
+        setErrorMessage(null); // Clear previous errors
 
+        if (!newItem.name) {
+            setErrorMessage("Item name is required.");
+            return;
+        }
+
+        if (newItem.metalType === 'none' && newItem.gemType === 'none') {
+            setErrorMessage("At least one of Metal Type or Gem Type must be selected.");
+            return;
+        }
+
+        if (newItem.metalType !== 'none' && (isNaN(newItem.metalWeight) || newItem.metalWeight < 0)) {
+            setErrorMessage("Metal weight must be a positive number.");
+            return;
+        }
+
+        if (newItem.gemType !== 'none' && (isNaN(newItem.gemWeight) || newItem.gemWeight < 0)) {
+            setErrorMessage("Gem weight must be a positive number.");
+            return;
+        }
+
+        // If we reach here, all validations passed!
         const itemWithValue: JewelryItem = {
             ...newItem,
             id: Date.now(),
@@ -63,6 +86,8 @@ const JewelryPortfolio = () => {
                 prices={marketPrices}
                 onUpdatePrice={handleUpdatePrice}
             />
+
+            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
             <AddItemForm
                 newItem={newItem}

@@ -9,19 +9,19 @@ export interface MarketPricesType {
 export interface JewelryItem {
     id: number;
     name: string;
-    metalType: 'gold' | 'silver';
+    metalType: 'gold' | 'silver' | 'none';
     goldKarat?: '24' | '22' | '18' | '14' | '10';
     metalWeight: number;
-    gemType: 'diamond' | 'ruby' | 'sapphire';
+    gemType: 'diamond' | 'ruby' | 'sapphire' | 'none';
     gemWeight: number;
     value: number;
 }
 
 export interface NewItemForm {
     name: string;
-    metalType: 'gold' | 'silver';
-    goldKarat: '24' | '22' | '18' | '14' | '10';
+    metalType: 'gold' | 'silver' | 'none';
+    goldKarat?: '24' | '22' | '18' | '14' | '10';
     metalWeight: number;
-    gemType: 'diamond' | 'ruby' | 'sapphire';
+    gemType: 'diamond' | 'ruby' | 'sapphire' | 'none';
     gemWeight: number;
 }
